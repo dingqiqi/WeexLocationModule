@@ -9,7 +9,7 @@ import com.taobao.weex.bridge.JSCallback;
 
 public interface ILocationModule {
 
-    //拍照
-    boolean locale(JSCallback callback);
+    //定位
+    boolean locale(String params, JSCallback callback);
 
 }

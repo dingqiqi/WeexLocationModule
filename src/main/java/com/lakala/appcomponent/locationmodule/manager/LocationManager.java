@@ -17,12 +17,16 @@ public class LocationManager {
 
     private LocationClient mLocationClient;
 
+    //定位坐标系
+    private static String mCoorType = "bd09ll";
+
     private LocationManager() {
         initLocation(mContext);
     }
 
-    public static LocationManager getInstance(Context context) {
+    public static LocationManager getInstance(Context context, String coorType) {
         mContext = context.getApplicationContext();
+        mCoorType = coorType;
         return LocationInstance.mInstance;
     }
 
@@ -39,7 +43,8 @@ public class LocationManager {
         if (mLocationClient == null) {
             mLocationClient = new LocationClient(context);
             LocationClientOption option = new LocationClientOption();
-            option.setCoorType("bd09ll");// bd09ll:设置坐标类型，为百度经纬坐标系
+            //可选，默认gcj02，设置返回的定位结果坐标系，如果配合百度地图使用，建议设置为bd09ll;
+            option.setCoorType(mCoorType);// bd09ll:设置坐标类型，为百度经纬坐标系
             option.setIsNeedAddress(true); //返回的定位结果包含地址信息
             option.setTimeOut(30000);
             option.setOpenGps(true);// 打开GPS定位

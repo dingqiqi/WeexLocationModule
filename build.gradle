@@ -26,6 +26,9 @@ allprojects {
             name 'Google'
         }
         jcenter()
+        maven {
+            url 'http://10.7.3.2/nexus/content/repositories/3rd/'
+        }
     }
 }
 
@@ -58,4 +61,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     provided 'com.taobao.android:weex_sdk:0.16.0'
     compile files('libs/BaiduLBS_Android.jar')
+    //权限模块
+    provided 'com.lakala.appcomponent:PermissionManager:1.0.3'
 }
